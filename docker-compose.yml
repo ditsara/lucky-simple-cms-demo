@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.4
+
+    environment:
+      POSTGRES_USER: lucky
+      POSTGRES_PASSWORD: developer
+    volumes:
+      - data:/var/lib/postgresql/data
+  web:
+    image: ditsara/lucky:development
+    build:
+      context: .
+    environment:
+      DB_HOST: db
+      DB_USERNAME: lucky
+      DB_PASSWORD: developer
+    ports:
+      - 3001:3001
+      - 3002:3002
+      - 5000:5000
+    volumes:
+      - .:/app:cached
+    working_dir: /app
+    command: lucky dev
+    depends_on:
+      - db
+
+volumes:
+  data:
