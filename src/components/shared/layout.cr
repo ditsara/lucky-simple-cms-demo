@@ -19,6 +19,10 @@ module Shared::Layout
     end
   end
 
+  def shared_layout_nav
+    link "Home", to: Home::Index
+  end
+
   abstract def page_title
 
   # This is the default page title. If you remove this method the compiler will

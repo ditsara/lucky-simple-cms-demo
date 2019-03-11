@@ -9,6 +9,7 @@ abstract class GuestLayout
       shared_layout_head
 
       body do
+        shared_layout_nav
         render_flash
         content
       end
