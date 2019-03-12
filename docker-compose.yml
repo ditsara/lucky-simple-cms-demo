@@ -23,7 +23,7 @@ services:
     volumes:
       - .:/app:cached
     working_dir: /app
-    command: lucky dev
+    command: script/dev
     depends_on:
       - db
 

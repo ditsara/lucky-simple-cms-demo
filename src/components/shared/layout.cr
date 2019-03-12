@@ -21,6 +21,8 @@ module Shared::Layout
 
   def shared_layout_nav
     link "Home", to: Home::Index
+    text " "
+    link "Pages", to: Pages::Index
   end
 
   abstract def page_title

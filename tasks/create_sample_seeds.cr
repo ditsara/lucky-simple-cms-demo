@@ -11,7 +11,7 @@ class Db::CreateSampleSeeds < LuckyCli::Task
     # Using a Avram::Box:
     #
     # Use the defaults, but override just the email
-    # UserBox.create &.email("me@example.com")
+    UserBox.create &.email("test@example.com")
 
     # Using a form:
     #

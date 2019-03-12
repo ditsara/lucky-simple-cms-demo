@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm -f .overmind.sock
+lucky dev

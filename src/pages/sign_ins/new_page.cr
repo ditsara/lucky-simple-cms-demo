@@ -4,6 +4,7 @@ class SignIns::NewPage < GuestLayout
   def content
     h1 "Sign In"
     render_sign_in_form(@form)
+    render_dev
   end
 
   private def render_sign_in_form(f)
@@ -19,5 +20,10 @@ class SignIns::NewPage < GuestLayout
   private def sign_in_fields(f)
     field(f.email) { |i| email_input i, autofocus: "true" }
     field(f.password) { |i| password_input i }
+  end
+
+  private def render_dev
+    return unless Lucky::Env.development?
+    para "(dev) sign in with test@example.com / password"
   end
 end

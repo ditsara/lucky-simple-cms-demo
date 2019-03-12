@@ -13,8 +13,10 @@ abstract class MainLayout
       shared_layout_head
 
       body do
-        render_flash
+        shared_layout_nav
+        text " "
         render_signed_in_user
+        render_flash
         content
       end
     end
