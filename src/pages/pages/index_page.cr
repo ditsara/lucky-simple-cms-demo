@@ -6,8 +6,8 @@ class Pages::IndexPage < MainLayout
     ul do
       @pages.each do |page|
         li do
-          h2 "#{page.id}: #{page.title}"
-          para page.body.to_s
+          link page.id, to: Pages::Show.with(slug: page.slug)
+          text "#{page.id} #{page.slug}: #{page.title}"
         end
       end
     end
