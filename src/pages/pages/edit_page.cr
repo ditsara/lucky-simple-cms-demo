@@ -1,9 +1,10 @@
-class Pages::NewPage < MainLayout
+class Pages::EditPage < MainLayout
   include PageFields
   needs form : PageForm
+  needs page : Page
 
   def content
-    h1 "New Page"
+    h1 "Edit Page"
 
     render_new_page_form(@form)
   end
@@ -11,7 +12,7 @@ class Pages::NewPage < MainLayout
   private def render_new_page_form(f)
     form_for Pages::Create do
       render_page_fields(f)
-      submit "Create Page"
+      submit "Update Page"
     end
   end
 end

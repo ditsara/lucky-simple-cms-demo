@@ -1,6 +1,7 @@
 class Pages::Edit < BrowserAction
   get "/pages/:id/edit" do
-    p = PageQuery.new.find(id)
-    render NewPage, form: PageForm.new
+    page = PageQuery.new.find(id)
+    form = PageForm.new({ "title" => "hi"})
+    render NewPage, page: page, form: form
   end
 end
