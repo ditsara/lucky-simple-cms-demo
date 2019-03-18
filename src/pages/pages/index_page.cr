@@ -9,6 +9,7 @@ class Pages::IndexPage < MainLayout
           link page.id, to: Pages::Show.with(slug: page.slug)
           text " #{page.slug}: #{page.title}"
           link " (edit)", to: Pages::Edit.with(id: page.id)
+          link " (delete)", to: Pages::Destroy.with(id: page.id)
         end
       end
     end

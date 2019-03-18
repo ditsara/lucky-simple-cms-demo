@@ -24,6 +24,12 @@ class SignIns::NewPage < GuestLayout
 
   private def render_dev
     return unless Lucky::Env.development?
-    para "(dev) sign in with test@example.com / password"
+    hr
+    para "development only"
+    form_for SignIns::Create do
+      hidden_input @form.email, value: "test@example.com"
+      hidden_input @form.password, value: "password"
+      submit "Dev Sign In"
+    end
   end
 end
