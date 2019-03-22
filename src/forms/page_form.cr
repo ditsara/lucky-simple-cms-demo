@@ -2,6 +2,7 @@ class PageForm < Page::BaseForm
   fillable title
   fillable body
   fillable slug
+  virtual published : Bool
 
   needs author : User, on: :create
 
@@ -18,9 +19,8 @@ class PageForm < Page::BaseForm
   def generate_slug
     return unless slug.value.nil? || slug.value == ""
 
-    r = Random::Secure.hex
-    title_string = title.value || r
-    title_string = r if title_string == ""
+    title_string = title.value.to_s
+    title_string = Random::Secure.hex if title_string.empty?
 
     s = title_string.downcase
       .gsub(/[^\w\s]/, "") # remove non-word chars
@@ -32,5 +32,10 @@ class PageForm < Page::BaseForm
   def remove_whitespace
     title.value = (title.value || "").strip
     slug.value = (slug.value || "").strip
+  end
+
+  def set_published_at
+    return unless published.value
+    published_at.value = Time.now
   end
 end

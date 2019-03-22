@@ -6,8 +6,8 @@ class Pages::IndexPage < MainLayout
     ul do
       @pages.each do |page|
         li do
-          link page.id, to: Pages::Show.with(slug: page.slug)
-          text " #{page.slug}: #{page.title}"
+          link "#{page.id}: #{page.slug}", to: Public::Show.with(slug: page.slug)
+          text ": #{page.title}"
           link " (edit)", to: Pages::Edit.with(id: page.id)
           link " (delete)", to: Pages::Destroy.with(id: page.id)
         end

@@ -1,4 +1,4 @@
-class Pages::ShowPage < GuestLayout
+class Public::ShowPage < GuestLayout
   needs page : Page
 
   def content
