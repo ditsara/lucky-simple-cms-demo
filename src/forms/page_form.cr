@@ -2,6 +2,7 @@ class PageForm < Page::BaseForm
   fillable title
   fillable body
   fillable slug
+  fillable mimetype
   virtual published : Bool
 
   needs author : User, on: :create
@@ -10,10 +11,16 @@ class PageForm < Page::BaseForm
     author.try { |user| author_id.value = user.id }
 
     generate_slug
+    generate_default_mimetype
     remove_whitespace
 
     validate_required title
     validate_required slug
+  end
+
+  def generate_default_mimetype
+    return unless mimetype.value.nil?
+    mimetype.value = "text/plain"
   end
 
   def generate_slug

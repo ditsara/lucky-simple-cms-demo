@@ -2,6 +2,8 @@ class Public::ShowPage < GuestLayout
   needs page : Page
 
   def content
-    raw @page.body || ""
+    div do
+      raw @page.body || ""
+    end
   end
 end
