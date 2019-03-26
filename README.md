@@ -1,4 +1,4 @@
-# resumedi
+# Simple CMS Demo
 
 This is a project written using [Lucky](https://luckyframework.org). Enjoy!
 
